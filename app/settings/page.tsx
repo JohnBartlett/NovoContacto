@@ -14,6 +14,7 @@ interface DisplaySettings {
   itemsPerPage: number
   sortBy: string
   sortOrder: string
+  terseDisplay: boolean
   createdAt: string
   updatedAt: string
 }
@@ -30,6 +31,7 @@ export default function SettingsPage() {
     itemsPerPage: 20,
     sortBy: 'name',
     sortOrder: 'asc',
+    terseDisplay: false,
     createdAt: '',
     updatedAt: ''
   })
@@ -177,6 +179,35 @@ export default function SettingsPage() {
                     </button>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Terse Display */}
+            <div>
+              <h2 className="text-title-3 text-label mb-4">Display Format</h2>
+              <p className="text-body text-secondaryLabel mb-6">
+                Choose how contacts are displayed in the list
+              </p>
+              
+              <div className="flex items-center justify-between p-4 bg-systemGray-6 rounded-apple">
+                <div>
+                  <div className="text-callout font-medium text-label">Terse Display</div>
+                  <div className="text-caption-1 text-secondaryLabel">Single-line format for compact viewing</div>
+                </div>
+                <button
+                  onClick={() => handleFieldToggle('terseDisplay')}
+                  className={`w-12 h-6 rounded-full transition-colors ${
+                    settings.terseDisplay 
+                      ? 'bg-systemBlue' 
+                      : 'bg-systemGray-4'
+                  }`}
+                >
+                  <div className={`w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${
+                    settings.terseDisplay 
+                      ? 'translate-x-6' 
+                      : 'translate-x-0.5'
+                  }`} />
+                </button>
               </div>
             </div>
 

@@ -25,6 +25,7 @@ interface DisplaySettings {
   itemsPerPage: number
   sortBy: string
   sortOrder: string
+  terseDisplay: boolean
 }
 
 interface ContactListProps {
@@ -195,35 +196,67 @@ export default function ContactList({
                       className="flex-1 min-w-0 cursor-pointer"
                       onClick={() => onContactSelect(contact)}
                     >
-                      {settings.showName && (
-                        <p className="text-headline text-label truncate">
-                          {contact.name || <span className="text-quaternaryLabel italic">Empty Name</span>}
-                        </p>
+                      {settings.terseDisplay ? (
+                        /* Terse Display - Single Line */
+                        <div className="flex items-center space-x-4 text-body">
+                          {settings.showName && (
+                            <span className="text-label font-medium">
+                              {contact.name || <span className="text-quaternaryLabel italic">Empty Name</span>}
+                            </span>
+                          )}
+                          {settings.showEmail && (
+                            <span className="text-secondaryLabel">
+                              {contact.email || <span className="text-quaternaryLabel italic">Empty Email</span>}
+                            </span>
+                          )}
+                          {settings.showPhone && (
+                            <span className="text-secondaryLabel">
+                              {contact.phone || <span className="text-quaternaryLabel italic">Empty Phone</span>}
+                            </span>
+                          )}
+                          {settings.showAddress && (
+                            <span className="text-secondaryLabel">
+                              {contact.address || <span className="text-quaternaryLabel italic">Empty Address</span>}
+                            </span>
+                          )}
+                          <span className="text-caption-1 text-quaternaryLabel">
+                            v{contact.version} • {formatDate(contact.updatedAt)}
+                          </span>
+                        </div>
+                      ) : (
+                        /* Standard Display - Multi-line */
+                        <>
+                          {settings.showName && (
+                            <p className="text-headline text-label truncate">
+                              {contact.name || <span className="text-quaternaryLabel italic">Empty Name</span>}
+                            </p>
+                          )}
+                          {settings.showEmail && (
+                            <p className="text-subhead text-secondaryLabel truncate">
+                              {contact.email || <span className="text-quaternaryLabel italic">Empty Email</span>}
+                            </p>
+                          )}
+                          {settings.showPhone && (
+                            <p className="text-subhead text-secondaryLabel truncate">
+                              {contact.phone || <span className="text-quaternaryLabel italic">Empty Phone</span>}
+                            </p>
+                          )}
+                          {settings.showAddress && (
+                            <p className="text-subhead text-secondaryLabel truncate">
+                              {contact.address || <span className="text-quaternaryLabel italic">Empty Address</span>}
+                            </p>
+                          )}
+                          <div className="flex items-center space-x-2 mt-1">
+                            <span className="text-caption-1 text-quaternaryLabel">
+                              v{contact.version}
+                            </span>
+                            <span className="text-caption-1 text-quaternaryLabel">•</span>
+                            <span className="text-caption-1 text-quaternaryLabel">
+                              {formatDate(contact.updatedAt)}
+                            </span>
+                          </div>
+                        </>
                       )}
-                      {settings.showEmail && (
-                        <p className="text-subhead text-secondaryLabel truncate">
-                          {contact.email || <span className="text-quaternaryLabel italic">Empty Email</span>}
-                        </p>
-                      )}
-                      {settings.showPhone && (
-                        <p className="text-subhead text-secondaryLabel truncate">
-                          {contact.phone || <span className="text-quaternaryLabel italic">Empty Phone</span>}
-                        </p>
-                      )}
-                      {settings.showAddress && (
-                        <p className="text-subhead text-secondaryLabel truncate">
-                          {contact.address || <span className="text-quaternaryLabel italic">Empty Address</span>}
-                        </p>
-                      )}
-                      <div className="flex items-center space-x-2 mt-1">
-                        <span className="text-caption-1 text-quaternaryLabel">
-                          v{contact.version}
-                        </span>
-                        <span className="text-caption-1 text-quaternaryLabel">•</span>
-                        <span className="text-caption-1 text-quaternaryLabel">
-                          {formatDate(contact.updatedAt)}
-                        </span>
-                      </div>
                     </div>
                   </div>
                 </div>

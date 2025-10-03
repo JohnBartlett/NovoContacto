@@ -85,6 +85,7 @@ model DisplaySettings {
   itemsPerPage  Int     @default(20)
   sortBy        String  @default("name")
   sortOrder     String  @default("asc")
+  terseDisplay  Boolean @default(false)
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

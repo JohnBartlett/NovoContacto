@@ -48,6 +48,7 @@ interface DisplaySettings {
   itemsPerPage: number
   sortBy: string
   sortOrder: string
+  terseDisplay: boolean
 }
 
 export default function Home() {
@@ -74,7 +75,8 @@ export default function Home() {
     showNotes: false,
     itemsPerPage: 20,
     sortBy: 'name',
-    sortOrder: 'asc'
+    sortOrder: 'asc',
+    terseDisplay: false
   })
 
   const fetchContacts = async () => {
