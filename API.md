@@ -34,6 +34,62 @@ All API responses follow a consistent format:
 }
 ```
 
+## Data Cleanup
+
+### POST /api/cleanup
+Perform data cleanup operations on contacts.
+
+#### Request Body
+```json
+{
+  "action": "cleanup_type"
+}
+```
+
+#### Cleanup Types
+- `general`: Comprehensive cleanup of all data issues
+- `useless-contacts`: Remove test data, placeholders, and generic contacts
+- `invalid-emails`: Remove contacts with malformed email addresses
+- `test-data`: Remove contacts from test domains and patterns
+- `data-validation`: Clean and normalize contact data formatting
+- `address-cleanup`: Fix malformed addresses and escape sequences
+- `empty-fields`: Fill in missing names and emails
+- `duplicates`: Find and remove duplicate contacts
+
+#### Response
+```json
+{
+  "success": true,
+  "results": {
+    "cleaned": 116,
+    "errors": 0,
+    "details": [
+      "Removed useless contact: John (john@example.com)",
+      "Removed contact with invalid email: Test User (invalid@email)",
+      "Cleaned address for contact cmga5ip2b0004o4mfmqzjqs4l"
+    ]
+  }
+}
+```
+
+#### Example Usage
+```bash
+# General cleanup
+curl -X POST http://localhost:3000/api/cleanup \
+  -H "Content-Type: application/json" \
+  -d '{"action": "general"}'
+
+# Remove useless contacts
+curl -X POST http://localhost:3000/api/cleanup \
+  -H "Content-Type: application/json" \
+  -d '{"action": "useless-contacts"}'
+
+# Clean invalid emails
+curl -X POST http://localhost:3000/api/cleanup \
+  -H "Content-Type: application/json" \
+  -d '{"action": "invalid-emails"}'
+```
+
 ## Contact Management
 
 ### GET /api/contacts

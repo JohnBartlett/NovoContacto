@@ -33,6 +33,17 @@ A modern, feature-rich web application for managing Google Contacts CSV exports 
 - **Selection Counter**: Real-time display of selected contacts
 - **Smart Selection**: Select all contacts matching search criteria across all pages
 
+### Data Cleanup & Quality
+- **Comprehensive Cleanup**: Advanced data cleaning with 8 different cleanup types
+- **Useless Contact Removal**: Remove test data, placeholders, and generic contacts
+- **Invalid Email Cleanup**: Remove contacts with malformed email addresses
+- **Test Data Removal**: Remove contacts from test domains and patterns
+- **Data Validation**: Clean and normalize contact data formatting
+- **Address Cleanup**: Fix malformed addresses and escape sequences
+- **Duplicate Removal**: Find and remove duplicate contacts
+- **Empty Field Management**: Fill in missing names and emails
+- **Smart Detection**: 16+ patterns for identifying problematic data
+
 ### User Experience
 - **Version Tracking**: Always see current version number in header
 - **Save Feedback**: Visual feedback for all save operations

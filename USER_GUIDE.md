@@ -9,9 +9,10 @@ Welcome to Novo Contacts, a powerful contact management system with advanced fea
 3. [Advanced Search](#advanced-search)
 4. [Contact Groups](#contact-groups)
 5. [Bulk Operations](#bulk-operations)
-6. [Version Control](#version-control)
-7. [Settings & Preferences](#settings--preferences)
-8. [Tips & Tricks](#tips--tricks)
+6. [Data Cleanup](#data-cleanup)
+7. [Version Control](#version-control)
+8. [Settings & Preferences](#settings--preferences)
+9. [Tips & Tricks](#tips--tricks)
 
 ## Getting Started
 
@@ -201,6 +202,100 @@ After bulk delete operations:
 - **Click "Undo"** to restore deleted contacts
 - **Click "✕"** to dismiss the notification
 - **Automatic cleanup** after 10 seconds
+
+## Data Cleanup
+
+### Overview
+
+The cleanup system helps you maintain clean, organized contact data by identifying and removing problematic contacts. It includes 8 different cleanup types to address various data quality issues.
+
+### Accessing Cleanup
+
+1. Click the **"Cleanup"** button in the top navigation bar
+2. Choose your cleanup type from the available options
+3. Click **"Start Cleanup"** to begin the process
+4. Review the results and details
+
+### Cleanup Types
+
+#### 1. General Cleanup 🧹
+- **Purpose**: Comprehensive cleanup of all data issues
+- **What it does**: Runs all cleanup routines in sequence
+- **Best for**: Complete data maintenance
+
+#### 2. Useless Contacts 🗑️
+- **Purpose**: Remove test data, placeholders, and generic contacts
+- **What it removes**:
+  - Test data patterns (test@, demo@, example@)
+  - Generic names (John, Jane, User, Admin)
+  - No-reply emails (noreply@, no-reply@)
+  - Placeholder data (single characters, generic addresses)
+
+#### 3. Invalid Emails 📧
+- **Purpose**: Remove contacts with malformed email addresses
+- **What it removes**:
+  - Missing @ symbol or multiple @ symbols
+  - Invalid characters (+, &, ', !, emojis)
+  - Incomplete emails (too short, missing TLD)
+  - Malformed email formats
+
+#### 4. Test Data 🧪
+- **Purpose**: Remove contacts from test domains and patterns
+- **What it removes**:
+  - Test domains (example.com, test.com, localhost)
+  - Test patterns (test1@, demo2@, user3@)
+  - Temporary domains (temp.com, tmp.com)
+
+#### 5. Data Validation ✅
+- **Purpose**: Clean and normalize contact data formatting
+- **What it does**:
+  - Normalizes formatting (removes extra spaces)
+  - Cleans phone numbers (removes invalid characters)
+  - Standardizes emails (lowercase, removes spaces)
+  - Cleans addresses (normalizes line breaks)
+
+#### 6. Address Cleanup 🏠
+- **Purpose**: Fix malformed addresses and escape sequences
+- **What it fixes**:
+  - Escape sequences (0D=0A, \n)
+  - Duplicate content in addresses
+  - Malformed address formatting
+
+#### 7. Empty Fields 📝
+- **Purpose**: Fill in missing names and emails
+- **What it does**:
+  - Extracts names from email addresses
+  - Generates placeholder emails for contacts with names
+  - Fills in missing contact information
+
+#### 8. Remove Duplicates 🔄
+- **Purpose**: Find and remove duplicate contacts
+- **What it does**:
+  - Identifies duplicates based on email addresses
+  - Keeps the oldest contact, removes newer duplicates
+  - Prevents duplicate contact clutter
+
+### Understanding Results
+
+After running cleanup, you'll see:
+- **Cleaned**: Number of contacts processed
+- **Errors**: Number of errors encountered
+- **Details**: Specific actions taken for each contact
+
+### Safety Features
+
+- **Version Control**: All changes are versioned and can be restored
+- **Soft Delete**: Contacts are marked as inactive, not permanently deleted
+- **Detailed Logging**: Every action is logged for transparency
+- **Error Handling**: Graceful handling of any issues during cleanup
+
+### Best Practices
+
+1. **Start with General Cleanup**: Run the comprehensive cleanup first
+2. **Review Results**: Check the details to understand what was cleaned
+3. **Run Specific Cleanups**: Use targeted cleanups for specific issues
+4. **Regular Maintenance**: Run cleanup periodically to maintain data quality
+5. **Backup First**: Consider backing up your data before major cleanups
 
 ## Version Control
 

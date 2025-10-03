@@ -5,6 +5,49 @@ All notable changes to the Novo Contacts project will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.1] - 2024-10-03
+
+### Added
+- Enhanced cleanup system with 8 different cleanup types
+- Useless Contacts cleanup: Remove test data, placeholders, and generic contacts
+- Invalid Emails cleanup: Remove contacts with malformed email addresses
+- Test Data cleanup: Remove contacts from test domains and patterns
+- Data Validation cleanup: Clean and normalize contact data formatting
+- Smart detection patterns for identifying problematic data
+- Comprehensive cleanup modal with detailed results reporting
+
+### Changed
+- Updated CleanupModal UI with new cleanup options and descriptions
+- Enhanced cleanup API with advanced data cleaning algorithms
+- Improved SQLite compatibility by removing mode parameters
+
+### Technical
+- Added 4 new cleanup functions: `cleanupUselessContacts`, `cleanupInvalidEmails`, `cleanupTestData`, `cleanupDataValidation`
+- Implemented 16+ detection patterns for invalid data
+- Enhanced error handling and detailed cleanup reporting
+- Successfully tested on real data: removed 116 problematic contacts
+
+## [1.4.0] - 2024-10-03
+
+### Added
+- Comprehensive data cleanup system with multiple cleanup types
+- Address cleanup: Fix malformed addresses and escape sequences
+- Empty fields cleanup: Fill in missing names and emails
+- Duplicate removal: Find and remove duplicate contacts
+- General cleanup: Comprehensive data cleaning
+- Cleanup modal with visual feedback and detailed results
+
+### Changed
+- Added cleanup button to main navigation
+- Updated version to v1.4.0
+- Enhanced contact list with automatic refresh after cleanup
+
+### Technical
+- Created `/api/cleanup` endpoint with multiple cleanup actions
+- Implemented `CleanupModal` component with comprehensive UI
+- Added cleanup state management to main application
+- Successfully tested cleanup operations on real data
+
 ## [1.3.4] - 2024-10-03
 
 ### Added
