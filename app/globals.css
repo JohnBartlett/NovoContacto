@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'sf-pro', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    background-color: #F2F2F7;
+    color: #000000;
+  }
+}
+
+@layer components {
+  /* Apple-style Buttons */
+  .btn {
+    @apply px-4 py-2 rounded-apple font-medium transition-all duration-200 font-sf-pro;
+    @apply active:scale-95 transform;
+  }
+  
+  .btn-primary {
+    @apply bg-systemBlue text-white hover:bg-blue-600;
+    @apply shadow-apple;
+  }
+  
+  .btn-secondary {
+    @apply bg-systemGray-6 text-label hover:bg-systemGray-5;
+    @apply border border-systemGray-4;
+  }
+  
+  .btn-destructive {
+    @apply bg-systemRed text-white hover:bg-red-600;
+  }
+  
+  .btn-plain {
+    @apply text-systemBlue hover:bg-systemGray-6;
+    @apply px-3 py-1 rounded-apple;
+  }
+  
+  /* Apple-style Cards */
+  .card {
+    @apply bg-systemBackground rounded-apple-lg shadow-apple;
+    @apply border border-systemGray-5;
+  }
+  
+  .card-elevated {
+    @apply bg-systemBackground rounded-apple-lg shadow-apple-lg;
+  }
+  
+  /* Apple-style Inputs */
+  .input {
+    @apply w-full px-3 py-2 rounded-apple border border-systemGray-4;
+    @apply bg-systemBackground text-label placeholder-quaternaryLabel;
+    @apply focus:border-systemBlue focus:ring-0 focus:outline-none;
+    @apply transition-colors duration-200;
+  }
+  
+  .input-group {
+    @apply bg-systemBackground rounded-apple border border-systemGray-4;
+    @apply focus-within:border-systemBlue focus-within:ring-0;
+  }
+  
+  /* Apple-style Lists */
+  .list-item {
+    @apply bg-systemBackground border-b border-systemGray-5;
+    @apply hover:bg-systemGray-6 active:bg-systemGray-5;
+    @apply transition-colors duration-150;
+  }
+  
+  .list-item:last-child {
+    @apply border-b-0;
+  }
+  
+  /* Apple-style Navigation */
+  .nav-item {
+    @apply text-secondaryLabel hover:text-label;
+    @apply transition-colors duration-150;
+  }
+  
+  .nav-item-active {
+    @apply text-systemBlue;
+  }
+  
+  /* Apple-style Typography - These are already defined in tailwind.config.js */
+  
+  /* Apple-style Modals */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-30;
+    @apply backdrop-blur-sm;
+  }
+  
+  .modal-content {
+    @apply bg-systemBackground rounded-apple-xl shadow-apple-xl;
+    @apply border border-systemGray-5;
+  }
+  
+  /* Apple-style Segmented Control */
+  .segmented-control {
+    @apply bg-systemGray-6 rounded-apple p-1;
+  }
+  
+  .segmented-control-item {
+    @apply px-3 py-1 rounded-apple text-callout font-medium;
+    @apply transition-all duration-150;
+  }
+  
+  .segmented-control-item-active {
+    @apply bg-systemBackground text-label shadow-apple;
+  }
+  
+  /* Apple-style Search Bar */
+  .search-bar {
+    @apply bg-systemGray-6 rounded-apple px-3 py-2;
+    @apply border border-transparent focus-within:border-systemBlue;
+    @apply transition-colors duration-150;
+  }
+  
+  /* Apple-style Status Indicators */
+  .status-success {
+    @apply text-systemGreen;
+  }
+  
+  .status-warning {
+    @apply text-systemOrange;
+  }
+  
+  .status-error {
+    @apply text-systemRed;
+  }
+  
+  .status-info {
+    @apply text-systemBlue;
+  }
+}

@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String?
+  phone     String?
+  address   String?
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Version control
+  version   Int      @default(1)
+  isActive  Boolean  @default(true)
+  
+  // Upload relationship
+  uploadId  String?
+  upload    ContactUpload? @relation(fields: [uploadId], references: [id])
+  
+  // Relationships
+  versions  ContactVersion[]
+  groups    ContactGroup[]
+  
+  @@map("contacts")
+}
+
+model ContactVersion {
+  id        String   @id @default(cuid())
+  contactId String
+  version   Int
+  
+  // Contact data at this version
+  name      String?
+  email     String?
+  phone     String?
+  address   String?
+  notes     String?
+  
+  createdAt DateTime @default(now())
+  
+  // Relationships
+  contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  
+  @@unique([contactId, version])
+  @@map("contact_versions")
+}
+
+model ContactUpload {
+  id          String   @id @default(cuid())
+  filename    String
+  uploadDate  DateTime @default(now())
+  totalContacts Int
+  processedContacts Int @default(0)
+  status      String   @default("processing") // processing, completed, failed
+  
+  // Relationships
+  contacts    Contact[]
+  
+  @@map("contact_uploads")
+}
+
+model DisplaySettings {
+  id        String   @id @default(cuid())
+  userId    String   @unique @default("default")
+  
+  // Field visibility settings
+  showName      Boolean @default(true)
+  showEmail     Boolean @default(true)
+  showPhone     Boolean @default(true)
+  showAddress   Boolean @default(true)
+  showNotes     Boolean @default(false)
+  
+  // Display preferences
+  itemsPerPage  Int     @default(20)
+  sortBy        String  @default("name")
+  sortOrder     String  @default("asc")
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("display_settings")
+}
+
+model Group {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  color       String?  @default("#007AFF") // Default blue color
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relationships
+  contacts    ContactGroup[]
+  
+  @@map("groups")
+}
+
+model ContactGroup {
+  id        String   @id @default(cuid())
+  contactId String
+  groupId   String
+  addedAt   DateTime @default(now())
+  
+  // Relationships
+  contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  group     Group   @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  
+  @@unique([contactId, groupId])
+  @@map("contact_groups")
+}
