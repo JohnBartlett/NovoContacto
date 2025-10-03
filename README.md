@@ -37,7 +37,8 @@ A modern, feature-rich web application for managing Google Contacts CSV exports 
 - **Version Tracking**: Always see current version number in header
 - **Save Feedback**: Visual feedback for all save operations
 - **Scrollable Lists**: Contact lists are scrollable for better navigation
-- **Settings Management**: Configurable items per page and display preferences
+- **Settings Management**: Configurable items per page, sorting, and display preferences
+- **Terse Display Mode**: Optional single-line, compact contact list layout
 - **History Tracking**: Complete audit trail of all contact changes
 
 ## 🛠 Tech Stack
@@ -99,6 +100,12 @@ npm run dev
 - **Edit**: Click the edit button to modify contact information
 - **Delete**: Remove contacts (soft delete with version history preserved)
 
+#### Display Formats
+- **Standard Display**: Multi-line layout showing each visible field on its own line
+- **Terse Display**: Single-line compact layout showing selected fields inline
+  - Enable via Settings → Display Format → Terse Display
+  - Honors your field visibility selections (Name, Email, Phone, Address)
+
 #### Advanced Search
 - **Text Search**: Type any text to search across all fields
 - **Empty Field Search**: Use "Empty Phone", "Empty Email", "Empty Address", "Empty Name", or "Empty Notes"
@@ -149,6 +156,7 @@ npm run dev
 - **Field Visibility**: Choose which fields to display (Name, Email, Phone, Address, Notes)
 - **Items Per Page**: Set how many contacts to show per page
 - **Sorting**: Choose sort field and order
+- **Display Format**: Toggle Terse Display for single-line list layout
 - **Preview**: See changes before applying
 
 #### Search Settings

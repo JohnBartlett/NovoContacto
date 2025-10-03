@@ -44,6 +44,13 @@ The main contact list shows all your imported contacts with:
 - **Notes**: Additional information
 - **Version**: Current version number
 
+#### Display Formats
+- **Standard Display**: Multi-line layout for readability
+- **Terse Display**: Single-line compact layout. To enable:
+  1. Go to Settings
+  2. Toggle "Terse Display" in the Display Format section
+  3. Click "Save Settings"
+
 ### Searching Contacts
 
 #### Simple Search

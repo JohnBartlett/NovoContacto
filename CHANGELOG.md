@@ -5,6 +5,35 @@ All notable changes to the Novo Contacts project will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.4] - 2024-10-03
+
+### Added
+- Terse display setting for single-line contact list format
+- Settings UI toggle for Display Format (Terse Display)
+
+### Changed
+- Updated `ContactList` to conditionally render terse vs standard layout
+- Bumped version shown in header to v1.3.4
+
+### Technical
+- Added `terseDisplay Boolean @default(false)` to `DisplaySettings` schema
+- Propagated `terseDisplay` through settings interfaces and state
+
+## [1.3.3] - 2024-10-03
+
+### Added
+- Created `/settings` page with comprehensive display and sorting options
+- Created `/history` page with upload history and contact version management
+
+### Fixed
+- Resolved 404 navigation errors for Settings and History links
+
+### Changed
+- Bumped version in header to v1.3.3
+
+### Technical
+- Implemented pages in the App Router and wired navigation
+
 ## [1.3.2] - 2024-10-03
 
 ### Added
