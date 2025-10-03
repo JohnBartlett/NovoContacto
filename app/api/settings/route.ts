@@ -38,12 +38,29 @@ export async function PUT(request: NextRequest) {
   try {
     const data = await request.json()
 
+    // Whitelist only fields that exist in the schema
+    const allowedKeys: Array<keyof any> = [
+      'showName',
+      'showEmail',
+      'showPhone',
+      'showAddress',
+      'showNotes',
+      'itemsPerPage',
+      'sortBy',
+      'sortOrder',
+      'terseDisplay'
+    ]
+
+    const filteredData = Object.fromEntries(
+      Object.entries(data).filter(([key]) => allowedKeys.includes(key))
+    )
+
     const settings = await prisma.displaySettings.upsert({
       where: { userId: 'default' },
-      update: data,
+      update: filteredData,
       create: {
         userId: 'default',
-        ...data
+        ...filteredData
       }
     })
 
