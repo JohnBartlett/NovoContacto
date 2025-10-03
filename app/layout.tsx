@@ -25,7 +25,7 @@ export default function RootLayout({
                   </div>
                   <h1 className="text-title-3 text-label">
                     Novo Contacts
-                    <span className="ml-2 text-caption-1 text-quaternaryLabel">v1.3.5</span>
+                    <span className="ml-2 text-caption-1 text-quaternaryLabel">v1.4.0</span>
                   </h1>
                 </div>
                 

@@ -1,13 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Upload, Users, Settings, History, Search, Filter, Download } from 'lucide-react'
+import { Upload, Users, Settings, History, Search, Filter, Download, Trash2 } from 'lucide-react'
 import ContactList from '@/components/ContactList'
 import ContactDetail from '@/components/ContactDetail'
 import UploadModal from '@/components/UploadModal'
 import SettingsModal from '@/components/SettingsModal'
 import HistoryModal from '@/components/HistoryModal'
 import GroupModal from '@/components/GroupModal'
+import CleanupModal from '@/components/CleanupModal'
 
 interface Contact {
   id: string
@@ -67,6 +68,7 @@ export default function Home() {
   const [showUploadModal, setShowUploadModal] = useState(false)
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [showHistoryModal, setShowHistoryModal] = useState(false)
+  const [showCleanupModal, setShowCleanupModal] = useState(false)
   const [settings, setSettings] = useState<DisplaySettings>({
     showName: true,
     showEmail: true,
@@ -402,6 +404,13 @@ export default function Home() {
             History
           </button>
           <button
+            onClick={() => setShowCleanupModal(true)}
+            className="btn btn-secondary flex items-center gap-2"
+          >
+            <Trash2 className="w-4 h-4" />
+            Cleanup
+          </button>
+          <button
             onClick={() => setShowGroupModal(true)}
             className="btn btn-secondary flex items-center gap-2"
           >
@@ -647,6 +656,16 @@ export default function Home() {
           isOpen={showGroupModal}
           onClose={() => setShowGroupModal(false)}
           onGroupUpdate={fetchGroups}
+        />
+      )}
+      {showCleanupModal && (
+        <CleanupModal
+          isOpen={showCleanupModal}
+          onClose={() => setShowCleanupModal(false)}
+          onCleanupComplete={() => {
+            fetchContacts()
+            setShowCleanupModal(false)
+          }}
         />
       )}
     </div>
