@@ -28,6 +28,30 @@ export default function CleanupModal({ isOpen, onClose, onCleanupComplete }: Cle
       icon: '🧹'
     },
     {
+      id: 'useless-contacts',
+      name: 'Useless Contacts',
+      description: 'Remove test data, placeholders, and generic contacts',
+      icon: '🗑️'
+    },
+    {
+      id: 'invalid-emails',
+      name: 'Invalid Emails',
+      description: 'Remove contacts with malformed email addresses',
+      icon: '📧'
+    },
+    {
+      id: 'test-data',
+      name: 'Test Data',
+      description: 'Remove contacts from test domains and patterns',
+      icon: '🧪'
+    },
+    {
+      id: 'data-validation',
+      name: 'Data Validation',
+      description: 'Clean and normalize contact data formatting',
+      icon: '✅'
+    },
+    {
       id: 'address-cleanup',
       name: 'Address Cleanup',
       description: 'Fix malformed addresses and escape sequences',
@@ -184,6 +208,10 @@ export default function CleanupModal({ isOpen, onClose, onCleanupComplete }: Cle
           <div className="flex items-center justify-between pt-4 border-t border-systemGray-4">
             <div className="text-caption-1 text-secondaryLabel">
               {selectedAction === 'general' && 'Comprehensive cleanup of all data issues'}
+              {selectedAction === 'useless-contacts' && 'Remove test data, placeholders, and generic contacts'}
+              {selectedAction === 'invalid-emails' && 'Remove contacts with malformed email addresses'}
+              {selectedAction === 'test-data' && 'Remove contacts from test domains and patterns'}
+              {selectedAction === 'data-validation' && 'Clean and normalize contact data formatting'}
               {selectedAction === 'address-cleanup' && 'Fix malformed address data'}
               {selectedAction === 'empty-fields' && 'Fill in missing contact information'}
               {selectedAction === 'duplicates' && 'Remove duplicate contacts'}
